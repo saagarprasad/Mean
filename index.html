@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js">
+        </script>
+    </head>
+
+    <body>
+        <div ng-app="myApp" ng-controller="myCtrl">
+            <label>Enter name</label>
+            <input type="text" ng-model="name" name="name">
+            <br><br>
+            <label>Enter register number</label>
+            <input type="number" ng-model="regno" name="regno">
+            <br><br>
+            <button ng-click="submit()">Submit</button>
+        </div>
+
+        <script>
+            var app = angular.module('myApp',[]);
+            app.controller('myCtrl',function($scope,$http){
+                $scope.submit = function(){
+                    $http.get("submit",
+                    { params: 
+                        { name: $scope.name, 
+                            regno: $scope.regno
+                        }});
+                };
+            });
+        </script>
+    </body>
